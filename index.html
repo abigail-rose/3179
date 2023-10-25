@@ -22,45 +22,23 @@
       Many of the most elite professional runners compete in the Boston Marathon every year. It is one of the only marathons in the world that you must qualify to run in.
     </p>
     <p>
-      By exploring the data surrounding the finishers of the 2015, 2016 and 2017 Boston Marathons, we can learn about some of the most impressive marathon runners in the world.
+      By exploring the data surrounding the finishers of the 2015 Boston Marathon, we can learn about some of the most impressive marathon runners in the world.
     </p>
     
-    <!-- Container for the visualization -->
-    <div id="vis"></div>
+    <!-- Container for the visualizations -->
+    <div id="vis1"></div>
+    <div id="vis2"></div>
+
 
     <script>
       // Assign the specification to a local variable vlSpec. [PLACEHOLDER]
-      var vlSpec = {
-        $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
-        data: {
-          values: [
-            {a: 'C', b: 2},
-            {a: 'C', b: 7},
-            {a: 'C', b: 4},
-            {a: 'D', b: 1},
-            {a: 'D', b: 2},
-            {a: 'D', b: 6},
-            {a: 'E', b: 8},
-            {a: 'E', b: 4},
-            {a: 'E', b: 7}
-          ]
-        },
-        mark: 'bar',
-        encoding: {
-          y: {field: 'a', type: 'nominal'},
-          x: {
-            aggregate: 'average',
-            field: 'b',
-            type: 'quantitative',
-            axis: {
-              title: 'Average of b'
-            }
-          }
-        }
-      };
+      var vlSpec1 = "Visualisations/map.json";
+      var vlSpec2 = "Visualisations/box_plots.json";
 
       // Embed the visualization in the container with id `vis`
-      vegaEmbed('#vis', vlSpec);
+      vegaEmbed('#vis1', vlSpec1);
+      vegaEmbed('#vis2', vlSpec2);
+
     </script>
   </body>
 </html>
