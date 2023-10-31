@@ -1,0 +1,55 @@
+h1 {
+    font-family: "Bromley", Georgia, serif; 
+    font-variant: small-caps;
+    font-size: xxx-large;
+
+}
+
+body {
+    background-image: url("running_background.jpg");
+    background-repeat: repeat-y;
+  }
+
+h2 {
+    font-family: Tahoma, sans-serif;
+    font-size: x-large;
+}
+
+h3 {
+    font-family: Tahoma, sans-serif;
+    font-size: large;
+
+}
+
+p {
+    font-family: Tahoma, sans-serif;
+    font-stretch: condensed;
+}
+
+.roundedbox {
+    border-radius: 25px;
+    background: floralwhite;
+    width: 1300px;
+	margin:10px auto;
+	padding:20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    }
+
+.columnleft {
+    float: left;
+    width: 45%;
+    padding: 10px;
+  }
+
+.columnright {
+    float: right;
+    width: 45%;
+    padding: 10px;
+  }
+.roundedbox:after {
+    content: "";
+    display: table;
+    clear: both;
+}

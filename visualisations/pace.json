@@ -1,0 +1,29 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/abigail-rose/3179/main/data/marathon_results_2015.csv"
+    },
+    "width": 350,
+    "height": 350,    
+    "transform": [
+        {
+        "calculate": "datum['Pace']? parseFloat(split(datum['Pace'],':')[0])*60 +parseFloat(split(datum['Pace'],':')[1]) + parseFloat(split(datum['Pace'],':')[2]/60) : 'No data from this region'",
+        "as": "mins_per_mile_pace"
+        },
+        {"calculate": "datum['M/F']", "as": "Runner Gender"}
+    ],    
+    
+    "mark": "rect",
+    "encoding": {
+    "x": {"field": "mins_per_mile_pace", "type": "quantitative", "title": "Average Pace (mins/mile)", "bin":true},
+    "y": {"field": "Runner Gender", "type": "nominal"},
+    "color": {"aggregate": "count", "type": "quantitative", "title": "Number of Runners",  "scale":{"type": "log", "base": 10}},
+    "tooltip":
+        [
+            {"field": "Runner Gender", "type": "nominal"},
+            {"field": "mins_per_mile_pace", "type": "quantitative", "title": "Average Pace (mins/mile)", "bin":true},
+            {"aggregate": "count", "type": "quantitative", "title": "Number of Runners"}
+        ]
+    }
+
+  }

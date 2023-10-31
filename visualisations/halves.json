@@ -1,0 +1,83 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/abigail-rose/3179/main/data/marathon_results_2015.csv"
+    },
+    "width": 350,
+    "height": 350,
+    "transform": [
+        {
+            "calculate": "datum['Official Time']? parseFloat(split(datum['Official Time'],':')[0])*60 +parseFloat(split(datum['Official Time'],':')[1]) + parseFloat(split(datum['Official Time'],':')[2]/60) : 'No data from this region'",
+            "as": "run_duration"
+        },
+        {
+            "calculate": "datum['Half']? parseFloat(split(datum['Half'],':')[0])*60 +parseFloat(split(datum['Half'],':')[1]) + parseFloat(split(datum['Half'],':')[2]/60) : 'No data from this region'",
+            "as": "first_half"
+        },
+        {
+          "calculate": "datum.run_duration - datum.first_half",
+          "as": "second_half"
+        }    
+      ],
+    "params": [{"name": "highlight", "select": "point"}],
+    "mark": "rect",
+    "encoding": {
+        "x": {
+          "bin": {"extent":[60, 270], "step": 10},
+          "field": "first_half",
+          "type": "quantitative",
+          "title": "Duration of First Half of Run (mins)"
+        },
+        "y": {
+          "bin": {"extent":[60, 270], "step": 10},
+          "field": "second_half",
+          "type": "quantitative",
+          "title": "Duration of Second Half of Run (mins)"
+
+        },
+        "color": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "scale": {
+            "type": "log",
+            "base": 10
+        },
+          "title": "Number of Runners"
+        },
+        "stroke": {
+          "condition": {
+            "param": "highlight",
+            "empty": false,
+            "value": "black"
+          },
+          "value": null
+        },
+        "opacity": {
+          "condition": {"param": "highlight", "value": 1},
+          "value": 0.5
+        },
+        "order": {"condition": {"param": "highlight", "value": 1}, "value": 0},
+        "tooltip":
+        [
+          {"aggregate": "count", "type": "quantitative", "title": "Number of Runners"},
+          {
+            "bin": {"extent":[60, 270], "step": 10},
+            "field": "first_half",
+            "type": "quantitative",
+            "title": "Duration of First Half of Run"
+          },
+          {
+            "bin": {"extent":[60, 270], "step": 10},
+            "field": "second_half",
+            "type": "quantitative",
+            "title": "Duration of Second Half of Run"
+  
+          }  
+        ]
+      },
+      "config": {
+        "view": {
+          "stroke": "transparent"
+        }
+      }
+    }

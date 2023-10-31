@@ -1,0 +1,76 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/abigail-rose/3179/main/data/marathon_results_2015.csv"
+    },
+    "width": 300,
+    "params": [
+        {
+          "name": "highlight",
+          "select": {"type": "point", "on": "pointerover"}
+        },
+        {"name": "select", "select": "point"}
+      ],
+    "transform": [
+        {
+            "calculate": "datum['Official Time']? parseFloat(split(datum['Official Time'],':')[0])*60 +parseFloat(split(datum['Official Time'],':')[1]) + parseFloat(split(datum['Official Time'],':')[2]/60) : 'No data from this region'",
+            "as": "run_duration"
+        },
+        {"calculate": "datum['M/F']", "as": "Runner Gender"},
+        {
+          "window": [{
+            "op": "rank",
+            "as": "rank"
+          }],
+          "sort": [{ "field": "run_duration", "order": "ascending" }],
+          "groupby": ["Runner Gender"]
+        }, {
+          "filter": "datum.rank <= 5"
+        }
+      ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+          "field": "run_duration",
+          "type": "quantitative",
+          "title": "Run Time (mins)"      },
+      "y": {
+          "field": "Name",
+          "type": "nominal",
+          "sort": {"field": "run_duration", "op": "average", "order":"ascending"},
+          "title": "Runner Name"
+      },
+      "color": {
+        "field": "Runner Gender",
+        "scale": {"range": ["#FF7F50", "#6495ED"]},
+        "legend": {"orient": "bottom"}
+      },
+      "fillOpacity": {
+        "condition": {"param": "select", "value": 1},
+        "value": 0.3
+      },
+      "strokeWidth": {
+        "condition": [
+          {
+            "param": "select",
+            "empty": false,
+            "value": 2
+          },
+          {
+            "param": "highlight",
+            "empty": false,
+            "value": 1
+          }
+        ],
+        "value": 0
+      },
+      "tooltip":[
+        {"field": "Name", "type": "nominal", "title": "Name"},
+        {"field": "Country", "type": "nominal", "title": "Country"},
+        {"field": "Runner Gender", "type": "nominal", "title": "Gender"},
+        {"field": "Overall", "type": "ordinal", "title": "Overall Rank"},
+        {"field": "run_duration", "type": "quantitative", "title": "Marathon Time (min)", "format": ".2f"}
+      ]
+    }
+  }
+  

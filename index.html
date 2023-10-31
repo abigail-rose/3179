@@ -14,30 +14,129 @@
         margin-right: 5px;
       }
     </style>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>The Boston Marathon In Numbers</h1>
-    <p> 
-      The Boston Marathon is the world's oldest annual marathon and ranks as one of the world's most prestigious road racing events.
-      Many of the most elite professional runners compete in the Boston Marathon every year. It is one of the only marathons in the world that you must qualify to run in.
-    </p>
-    <p>
-      By exploring the data surrounding the finishers of the 2015 Boston Marathon, we can learn about some of the most impressive marathon runners in the world.
-    </p>
-    
-    <!-- Container for the visualizations -->
-    <div id="vis1"></div>
-    <div id="vis2"></div>
+    <div class="roundedbox">
+      <h1>The Boston Marathon In Numbers</h1>
+      <p> 
+        The Boston Marathon is the world's oldest annual marathon and ranks as one of the world's most prestigious road racing events.
+        Many of the most elite professional runners compete in the Boston Marathon every year. It is one of the only marathons in the world that you must qualify to run in.
+      </p>
+      <p>
+        The 2015 Boston Marathon was the 119th Boston Marathon occasion. It took place on Monday, April 20. By exploring the data surrounding the finishers of the 2015 Boston Marathon, we can learn about some of the most impressive marathon runners in the world.
+      </p>
+    </div>
 
+    <div class="roundedbox">
+      <h2> 2015 Boston Marathon Winners </h2>
+      <div class="columnleft">
+        <p>
+          The winner of the <b>men's</b> Boston Marathon in 2015 was <b>Lelisa Desisa</b> from <b>Ethiopia</b>, with a time of 129 minutes. Desisa won the 2013 Boston Marathon. His 2018 win by 31 seconds was the largest margin of victory since 2008.
+        </p>
+        <p>
+          The winner of the <b>women's</b> Boston Marathon in 2015 was <b>Caroline Rotich</b> from <b>Kenya</b>, with a time of 144 minutes. It was her first time running in the Boston Marathon, and the fifth consecutive year of wins for Kenya in the women's race.
+        </p>
+        <p>
+          Since 1986, participants of the Boston Marathon have been eligible for prize money. 
+          The male and female winners of the 2015 Boston Marathon each recieved a cash prize of $150,000.
+          Over $1 million in prize money was available across all divisions.
+        </p>
+      </div>
+      <div  class="columnright" id="vis3"> </div>
+    </div>
+    
+    <div class="roundedbox" >
+      <h2> Marathon Time by Gender </h2>
+      <div class="columnleft">
+          <p>
+            In 2015, the gender split was almost equal between men and women competing in the Boston Marathon. This was not always the case. In 1967, women were not yet officially included in the marathon, but <b>Kathrine Switzer</b> officially became the first woman to cross the line. She entered under the initials K.V. Switzer, and remained unnoticed until the 1.5 mark, at which point her boyfriend was able to remove the official who noticed her and she was able to complete the run.
+          </p>
+          <p>
+            Thanks to Switzer, the first official womens division was included in the marathon in 1972, with only 50 women participating. Since then, the number of women participating in the marathon has rapidly increased. As of 2023, nearly half of the racers at the Boston Marathon were women, after just over 50 years since they were first included.
+          </p>
+      </div>
+      <div class="columnright" id="vis4"></div>
+      <div  class="columnleft" id="vis2"> </div>
+      <div  class="columnright"> 
+        <p>
+          In 2015, to qualify for the Boston Marathon, men in the 18-34 age group had to beat a time of 185 minutes, and women had to beat a time of 215 minutes. Qualifying times vary by age group, however the majority of elite runners at the Boston Marathon fit into this youngest age bracket.
+        </p>
+        <p>
+          The average length of time that it takes a runner to complete a marathon is approximatley 270 minutes. 
+          During the 2015 Boston Marathon, the overall average marathon time was approximately <b>226 minutes</b> - indicated by the red line. This is a whole 44 minutes faster than the global average marathon time. This is likely because of the strict qualifications for the Boston Marathon.
+        </p>
+        <p>
+          When broken down by gender, the average <b>men's</b> Boston Marathon time in 2015 was <b>216 minutes</b> - marked by the blue line, and the average <b>women's</b> marathon time was <b>238 minutes</b>, marked by the orange line. 
+          While these are greater than the qualifying times, likely due to variations in age group, they are still significantly faster than the 270 minute average for the general demographic of marathon runners in the world.
+        </p>
+      </div>
+    </div>
+
+    <div class="roundedbox">
+      <h2> Average Marathon Time by Country </h2>
+      <div id="vis1"></div>
+      <div> 
+        <p>
+        Over the past quarter of a century, <b>Kenya</b> has had the most winners of the Boston Marathon of any country, across both the men's and women's divisions, with <b>Ethiopia</b> coming in at a close second across both divisions.
+      </p>
+      <p>
+        The map above displays the average marathon time for all runners from each country in the 2015 Boston Marathon. 
+        Runners from <b>Ukraine</b> averaged the fastest overall time of approximately 133 minutes. It is important to note that no women competed from Ukraine.
+        In the women's race, runners from <b>Ethiopa</b> averaged the fastest overall time of just under 145 minutes.
+        In the men's race, runners from <b>Ethiopa</b> averaged the fastest overall time of approximately 130 minutes.
+      </p>
+      </div>
+    </div>
+
+    <div class="roundedbox">
+      <h2> Marathon Pacing </h2>
+        <div class="columnleft"> 
+          <h3> Average Pace </h3>
+          <p>
+            Most runners will go into a marathon with a <b>goal pace</b> in mind, if assuming an 'even-pace' stragegy, which is explained in detail in the pace consistency section below. This visualisation shows the runners' average 'minutes per mile' pace, or the number of minutes in which they aim to run each 1.6km increment of their race.
+          </p>
+          <p>
+            There is no perfect pace goal, however most marathon runners have quite a clear idea of their race pace, and what they can do to maintain it. Their marathon pace will be one that they are confident they can maintain for the entire duration of the marathon.
+          </p>
+          <p>
+            In general, the average pace for a <b>male</b> marathon runner is <b>10.34 minutes per mile</b>. The average pace for a <b>female</b> marathon runner is a <b>11.55 minutes per mile</b>. Of course, due to the elite nature of the Boston Marathon, it is unsurprising that these averages are beat across the board.     
+          </p>
+        </div>
+        <div class="columnright" id="vis6"></div>
+
+        <div class="columnleft"> 
+          <h3> Pace Consistency </h3>
+          <p>
+            <b>Pace consistency</b> is a major factor in marathon running. In general,  <b>maintaining a consistent pace throughout a marathon</b>, or the <b>'even-pace' strategy</b> is the most common technique. The closer a runner is to the centre diagonal of this visualisation, the more consistent their pace is.
+          </p>
+          <p>
+            While it is not a common strategy, some runners like to bank some energy for the second half of the run. This is difficult to execute, however some runners were able to achieve an even <b>faster second half</b> at the 2015 Boston Marathon, as represented by any score in the bottom right of the visualisation.
+          </p>
+          <p>
+            If a runner pushes themselves too hard early on in a marathon, it is likely that they will burn out and have a slower second-half time. Even in the prestigious Boston Marathon, runners were not exempt from this phenomenon - any score in the top left of the visualisation represents a <b>slower second half</b>.
+          </p>
+        </div>
+        <div class="columnright" id="vis5"></div>
+      </div>
 
     <script>
       // Assign the specification to a local variable vlSpec. [PLACEHOLDER]
       var vlSpec1 = "Visualisations/map.json";
-      var vlSpec2 = "Visualisations/box_plots.json";
+      var vlSpec2 = "Visualisations/area_plots.json";
+      var vlSpec3 = "Visualisations/top_scorers.json";
+      var vlSpec4 = "Visualisations/gender_split.json";
+      var vlSpec5 = "Visualisations/halves.json";
+      var vlSpec6 = "Visualisations/pace.json";
 
       // Embed the visualization in the container with id `vis`
       vegaEmbed('#vis1', vlSpec1);
       vegaEmbed('#vis2', vlSpec2);
+      vegaEmbed('#vis3', vlSpec3);
+      vegaEmbed('#vis4', vlSpec4);
+      vegaEmbed('#vis5', vlSpec5);
+      vegaEmbed('#vis6', vlSpec6);
+
 
     </script>
   </body>

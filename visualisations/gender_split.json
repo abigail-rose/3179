@@ -1,0 +1,16 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple pie chart with embedded data.",
+    "height": 250,
+    "data": {
+        "url": "https://raw.githubusercontent.com/abigail-rose/3179/main/data/marathon_results_2015.csv"
+    },
+    
+    "transform": [{"calculate": "datum['M/F']", "as": "Runner Gender"}],
+    "mark":  {"type": "arc", "tooltip": true},
+    "encoding": {
+      "theta": {"aggregate": "count", "type": "quantitative", "stack": "normalize"},
+      "color": {"field": "Runner Gender", "type": "nominal", "scale": {"range": ["#FF7F50", "#6495ED"]}, "legend":{"orient": "bottom"}}
+    }
+}
+  

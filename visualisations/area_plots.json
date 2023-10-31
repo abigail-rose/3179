@@ -1,0 +1,101 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/abigail-rose/3179/main/data/marathon_results_2015.csv"
+    },
+    "transform": [
+        {
+            "calculate": "datum['Official Time']? parseInt(split(datum['Official Time'],':')[0])*60 +parseInt(split(datum['Official Time'],':')[1]) : 'No data from this region'",
+            "as": "run_duration"
+        },
+        {"calculate": "datum['M/F']", "as": "Runner Gender"},
+        {"calculate": "random()", "as": "random"}
+    ],
+    "layer": [
+        {
+        "mark": "area",
+        "params": [{
+            "name": "gender",
+            "select": {"type": "point", "fields": ["Runner Gender"]},
+            "bind": "legend"
+          }],
+        "encoding": {
+            "x": {
+                "field": "run_duration",
+                "type": "quantitative",
+                "title": "Marathon Time (mins)"
+            },
+            "y": {
+                "aggregate": "count", 
+                "field": "Runner Gender",
+                "axis": null,
+                "stack": "center"},
+            "color": {
+                "field": "Runner Gender", 
+                "type": "nominal", 
+                "scale": {"range": ["#FF7F50", "#6495ED"]},
+                "legend": {"orient": "bottom"}
+            },
+            "opacity": {
+                "condition": {"param": "gender", "value": 1},
+                "value": 0.5
+              },
+            "yOffset": {"field": "random", "type": "quantitative"},
+            "tooltip": [
+                {"field": "Runner Gender", "type": "nominal", "title": "Runner Gender"},
+                {"field": "run_duration", "type": "quantitative", "title": "Run Duration (mins)", "format": ".0f"}
+            ]
+        }
+        },
+        {
+            "mark": "rule",
+            "encoding": {
+                "x": {"aggregate": "mean", "field": "run_duration"},
+                "color": {"value": "red"},
+                "size": {"value": 3},
+                "tooltip": {
+                    "field": "run_duration", 
+                    "aggregate": "average",
+                    "format": ".0f",
+                    "type": "quantitative"
+                }
+            }
+        },
+        {
+            "mark": "rule",
+            "transform": [{"filter": {"field": "Runner Gender", "equal": "M"}}],
+            "encoding": {
+                "x": {"aggregate": "mean", "field": "run_duration"},
+                "color": {"value": "#6495ED"},
+                "size": {"value": 3},
+                "tooltip": {
+                    "field": "run_duration", 
+                    "aggregate": "average",
+                    "format": ".0f",
+                    "type": "quantitative",
+                    "title": "Mens' Average"
+                }
+            }
+        },
+        {
+            "mark": "rule",
+            "transform": [{"filter": {"field": "Runner Gender", "equal": "F"}}],
+            "encoding": {
+                "x": {"aggregate": "mean", "field": "run_duration"},
+                "color": {"value": "#FF7F50"},
+                "size": {"value": 3},
+                "tooltip": {
+                    "field": "run_duration", 
+                    "aggregate": "average",
+                    "format": ".0f",
+                    "type": "quantitative",
+                    "title": "Womens' Average"
+                }
+            }
+        }
+        ]
+    }
+    
+    
